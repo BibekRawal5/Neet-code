@@ -1,20 +1,24 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
+#include <string.h>
 
 bool isAnagram(char *s, char *t)
 {
+    if (strlen(s) != strlen(t))
+        return false;
+        
     int i, j, count = 0;
-    for(int i = 0; s[i] != '\0'; i++)
+    for(i = 0; s[i] != '\0'; i++)
     {
         for (j = 0; t[j] != '\0'; j++)
         {
             if (s[i] == t[j])
             {
+                t[j] = '0';
                 count++;
                 break;
-            }
-            
+            }    
         }
 
         if(count <= i){
@@ -41,7 +45,7 @@ int main()
         printf("It is an anagram.");
   
     else
-        printf("It is not an angram.");
+        printf("It is not an anagram.");
 
     free(first);
     free(second);
